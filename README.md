@@ -15,13 +15,13 @@ HTTP Endpoint and Logging Exercise
 
 ## Setup
 
-Requirements for running the application:
+### Requirements:
 
 * Node.js >= 8
 
 ### Building
 
-Installs app dependencies so you can run the server locally:
+Install app dependencies:
 ```
 npm i
 ```
