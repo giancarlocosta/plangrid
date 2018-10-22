@@ -1,0 +1,52 @@
+{
+
+  "InvalidError": {
+    "name": "InvalidError",
+    "message": "Request was invalid.",
+    "statusCode": 400,
+    "code": 4000
+  },
+
+  "UnauthorizedError": {
+    "name": "UnauthorizedError",
+    "message": "User not authorized.",
+    "statusCode": 401,
+    "code": 4010
+  },
+
+  "ForbiddenError": {
+    "name": "ForbiddenError",
+    "message": "User not authorized.",
+    "statusCode": 403,
+    "code": 4030
+  },
+
+  "NotFoundError": {
+    "name": "NotFoundError",
+    "message": "Resource in request not found.",
+    "statusCode": 404,
+    "code": 4040
+  },
+
+  "SpecificResourceNotFoundError": {
+    "name": "SpecificResourceNotFoundError",
+    "message": "Specific Resource not found.",
+    "statusCode": 404,
+    "code": 4041
+  },
+
+  "ReferenceNotFoundError": {
+    "name": "ReferenceNotFoundError",
+    "message": "Referenced object not found.",
+    "statusCode": 404,
+    "code": 4042
+  },
+
+  "AlreadyExistsError": {
+    "name": "AlreadyExistsError",
+    "message": "Resource already exists",
+    "statusCode": 409,
+    "code": 4091
+  }
+
+}

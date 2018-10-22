@@ -1,0 +1,140 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Metric Service API"
+  },
+  "host": "0.0.0.0:3000",
+  "schemes": [
+    "http"
+  ],
+  "basePath": "/api",
+  "produces": [
+    "application/json"
+  ],
+
+  "paths": {
+
+    "/metric/{key}/sum": {
+
+      "get": {
+        "description": "Returns the sum of all metrics reported for this key over the past hour.",
+        "produces": [ "application/json" ],
+        "tags": ["metric"],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "description": "Key/id of metric to fetch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success. Sum in response body.",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "404": {
+            "description": "NotFoundError",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "responseExample": "{\r\n\t\"value\": 14\r\n}"
+      }
+    },
+
+    "/metric/{key}": {
+
+      "post": {
+        "description": "Log a metric.",
+        "produces": [ "application/json" ],
+        "tags": ["metric"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Metric body (only \"value\" for now)",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "requestExample": "{\r\n\t\"value\": 2\r\n}",
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "InvalidError",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "responseExample": "{\r\n}"
+      }
+    }
+
+  },
+
+  "definitions": {
+
+    "metric": {
+      "title": "Metric",
+      "description": "The Metric type schema.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "title": "value",
+          "description": "Quantity for this metric.",
+          "type": "integer",
+          "maxLength": 256,
+          "default": 0
+        }
+      },
+      "required": [
+        "value"
+      ]
+    },
+
+    "Error": {
+      "type": "object",
+      "properties": {
+        "statusCode": {
+          "type": "integer",
+          "format": "int32",
+          "description": "HTTP Error code"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the error"
+        },
+        "message": {
+          "type": "string",
+          "description": "Basic error message"
+        },
+        "details": {
+          "type": "string",
+          "description": "Additional error details"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Sub error code (for different errors that must share same HTTP code)"
+        }
+      },
+      "required": [
+        "name",
+        "statusCode"
+      ]
+    }
+  }
+}

@@ -1,0 +1,9 @@
+.DS_Store
+.idea
+node_modules/
+linux_node_modules/
+*.log
+coverage/
+coverage.zip
+.nyc_output/
+lcov.info
