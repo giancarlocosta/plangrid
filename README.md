@@ -11,7 +11,8 @@
 
 ## Overview
 
-HTTP Endpoint and Logging Exercise
+**NOTE**: The scaffolding for this service is from a generic template
+I created for myself to create NodeJS services quickly.
 
 ## Setup
 
